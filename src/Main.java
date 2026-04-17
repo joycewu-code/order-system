@@ -14,7 +14,11 @@ public class Main {
             System.out.println("單價不可為0");
             return;
         }
-
+        if (quantity <= 0) {
+            System.out.println("數量不可為0");
+            return;
+        }
+                
         int total = quantity * price;
         System.out.println("總金額：" + total);
     }
