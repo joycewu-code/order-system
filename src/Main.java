@@ -10,16 +10,17 @@ public class Main {
         System.out.print("請輸入單價: ");
         int price = sc.nextInt();
 
-        if (price <= 0) {
-            System.out.println("單價不可為0");
-            return;
+        // 建立訂單物件
+        Order order = new Order(quantity, price);
+
+        // 呼叫服務
+        OrderService service = new OrderService();
+
+        try {
+            int total = service.calculateTotal(order);
+            System.out.println("總金額：" + total);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         }
-        if (quantity <= 0) {
-            System.out.println("數量不可為0");
-            return;
-        }
-                
-        int total = quantity * price;
-        System.out.println("總金額：" + total);
     }
 }
